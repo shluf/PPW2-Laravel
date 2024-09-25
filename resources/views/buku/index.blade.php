@@ -41,7 +41,7 @@
                     <td id="form-edit-0{{ $buku->id }}" style="display: none;"><input type="text" name="judul" value="{{ $buku->judul }}"></td>
                     <td id="form-edit-1{{ $buku->id }}" style="display: none;"><input type="text" name="penulis" value="{{ $buku->penulis }}"></td>
                     <td id="form-edit-2{{ $buku->id }}" style="display: none;"><input type="text" name="harga" value="{{ $buku->harga }}"></td>
-                    <td id="form-edit-3{{ $buku->id }}" style="display: none;"><input type="date" name="tgl_terbit" value="{{ $buku->tgl_terbit }}"></td>
+                    <td id="form-edit-3{{ $buku->id }}" style="display: none;"><input type="date" name="tgl_terbit" value="{{ $buku->tgl_terbit->format('Y-m-d') }}"></td>
                     <td id="form-edit-4{{ $buku->id }}" style="display: none;"><button type="submit" class="btn btn-success">Update</button></td>
                 </form>
 
