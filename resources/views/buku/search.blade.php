@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>List Buku</title>
-</head>
-
-<body class="p-4">
-    @if(Session::has('pesan'))
-    <div class="alert alert-success">{{Session::get('pesan')}}</div>
+@section('title', 'Tambah Buku')
+@section('content')
+<div class="p-4">
+    @if(count($data_buku))
+        <div class="alert alert-success">Ditemukan <strong>{{count($data_buku)}}</strong> data dengan kata: <strong>{{ $cari }}</strong></div>
+    @else
+        <div class="alert alert-warning"><h4>Data {{ $cari }} tidak ditemukan</h4>
+        <a href="/buku" class="btn btn-warning">Kembali</a></div>
     @endif
     <nav class="d-flex justify-content-end w-100 my-4 gap-4">
         <form action="{{ route('buku.search') }}" method="get">@csrf
@@ -75,14 +72,13 @@
 
         </tbody>
     </table>
-
-
+    
+    
     <p class="alert alert-info">Jumlah Buku: {{ $jumlah_buku }}</p>
     <div class="d-flex justify-content-center flex-row">
         {{ $data_buku->links('pagination::bootstrap-5') }}
     </div>
 
     <script src="/js/toggleEdit.js"></script>
-</body>
-
-</html>
+</div>
+@endsection

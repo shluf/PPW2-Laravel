@@ -3,7 +3,16 @@
 @section('title', 'Tambah Buku')
 @section('content')
     <div class="container">
-        <h4>Tambah Buku</h4>
+        <h2 class="text-center my-4">Tambah Buku</h2>
+        
+        @if (count($errors) > 0)
+        <ul class="alert alert-danger">
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+        @endif
+
         <form method="post" action="{{route('buku.store')}}">
             @csrf
             <div >
@@ -20,7 +29,7 @@
             </div>
             <div class="mb-2">
                 <label for="tgl_terbit" class="form-label">Tanggal Terbit</label>
-                <input type="date" class="form-control" id="tgl_terbit" name="tgl_terbit">
+                <input type="text" id="tgl_terbit" name="tgl_terbit" class="date form-control" placeholder="yyyy/mm/dd">
             </div>
             <button class="btn btn-primary" type="submit">Simpan</button>
             <a class="btn btn-outline-danger" href="{{'/buku'}}">Kembali</a>
