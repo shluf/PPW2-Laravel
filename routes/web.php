@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes([
-    'logout'=> false,
+    'logout'=> true,
     'reset' => false,
     'reset' => false, 
     'verify' => false, 

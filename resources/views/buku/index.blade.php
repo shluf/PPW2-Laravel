@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>List Buku</title>
-</head>
-
+@section('content')
 <body class="p-4">
     @if(Session::has('pesan'))
     <div class="alert alert-success">{{Session::get('pesan')}}</div>
@@ -16,7 +9,9 @@
         <form action="{{ route('buku.search') }}" method="get">@csrf
             <input type="text" name="kata" class="form-control" placeholder="Cari ... ">
         </form>
+        @if(Auth::check() && Auth::user()->level=='admin')
         <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Buku</a>
+        @endif
     </nav>
     <table class="table table-stripped">
         <thead>
@@ -26,8 +21,10 @@
                 <th>Penulis</th>
                 <th>Harga</th>
                 <th>Tanggal Terbit</th>
+                @if(Auth::check() && Auth::user()->level=='admin')
                 <th>Aksi</th>
                 <th>Edit</th>
+                @endif
             </tr>
         </thead>
         <tbody>
@@ -53,6 +50,8 @@
                     <td id="form-edit-4{{ $buku->id }}" style="display: none;"><button type="submit" class="btn btn-success">Update</button></td>
                 </form>
 
+                @if(Auth::check() && Auth::user()->level=='admin')
+
                 <td id="hps-{{ $buku->id }}">
                     <form action="{{ route ('buku.destroy', $buku->id) }}" method="POST">
                         @csrf
@@ -66,6 +65,7 @@
                 <td>
                     <button class="btn btn-outline-warning" onclick="toggleEditForm('{{ $buku->id }}')">Edit</button>
                 </td>
+                @endif
             </tr>
             @endforeach
             <tr>
@@ -85,4 +85,4 @@
     <script src="/js/toggleEdit.js"></script>
 </body>
 
-</html>
+@endsection

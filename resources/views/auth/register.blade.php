@@ -40,6 +40,23 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="level" class="col-md-4 col-form-label text-md-end">{{ __('Level') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="level" class="form-control @error('level') is-invalid @enderror" name="level" required>
+                                    <option value="admin">{{ __('Admin') }}</option>
+                                    <option value="user">{{ __('User') }}</option>
+                                </select>
+
+                                @error('level')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
