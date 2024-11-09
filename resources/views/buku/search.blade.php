@@ -10,7 +10,8 @@
         <a href="/buku" class="btn btn-warning">Kembali</a></div>
     @endif
     <nav class="d-flex justify-content-end w-100 my-4 gap-4">
-        <form action="{{ route('buku.search') }}" method="get">@csrf
+        <form action="{{ route('buku.search') }}" method="get" enctype="multipart/form-data">
+            @csrf
             <input type="text" name="kata" class="form-control" placeholder="Cari ... ">
         </form>
         <a href="{{ route('buku.create') }}" class="btn btn-primary">Tambah Buku</a>
@@ -39,7 +40,7 @@
                     <td id="baris-4{{ $buku->id }}">{{ $buku->tgl_terbit->format('d/m/Y') }}</td>
                 </div>
 
-                <form action="{{ route ('buku.update', $buku->id) }}" method="POST">
+                <form action="{{ route ('buku.update', $buku->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="id" value="{{ $buku->id }}">
@@ -51,7 +52,7 @@
                 </form>
 
                 <td id="hps-{{ $buku->id }}">
-                    <form action="{{ route ('buku.destroy', $buku->id) }}" method="POST">
+                    <form action="{{ route ('buku.destroy', $buku->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('DELETE')
                         <button onclick="return confirm('Yakin mau dihapus?')"

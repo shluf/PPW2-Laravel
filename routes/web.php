@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,8 @@ Route::delete('/buku/{id}', [BukuController::class, 'destroy' ])->name ( 'buku.d
 Route::put('/buku/{id}', [BukuController::class, 'update' ])->name ( 'buku.update');
 
 Route::get( '/buku/search', [BukuController::class, 'search' ])->name( 'buku.search');
+
+Route::delete('gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
 
 
