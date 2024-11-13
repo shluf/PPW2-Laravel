@@ -131,29 +131,29 @@
                             </button>
                         </div>
 
-                        @if($buku->galleries()->count() > 0)
-                        <div class="mb-3">
-                            <label class="form-label">Current Gallery Images</label>
-                            <div class="row">
-                                @foreach($buku->galleries()->get() as $gallery)
-                                <div class="col-md-4 mb-2">
-                                    <img src="{{ asset($gallery->path) }}" alt="Gallery image" class="img-fluid rounded">
-                                    <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" class="mt-2">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                        @endif
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
+                @if($buku->galleries()->count() > 0)
+                <div class="m-3">
+                    <h2 class="form-label">Current Gallery Images</h2>
+                    <div class="row">
+                        @foreach($buku->galleries()->get() as $gallery)
+                        <div class="col-md-4 mb-2">
+                            <img src="{{ asset($gallery->path) }}" alt="Gallery image" class="img-fluid rounded">
+                            <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST" class="mt-2">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>
