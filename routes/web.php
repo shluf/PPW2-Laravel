@@ -28,6 +28,4 @@ Route::get( '/buku/search', [BukuController::class, 'search' ])->name( 'buku.sea
 
 Route::delete('gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
