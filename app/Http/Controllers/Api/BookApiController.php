@@ -34,10 +34,7 @@ class BookApiController extends Controller
             'filepath' => $validated['filepath'] ?? null,
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Buku berhasil disimpan',
-            'data' => new BookResource(true, 'Berhasil disimpan', $book)
-        ]);
+        return new BookResource(true, 'Berhasil disimpan', $book);
+        
     }
 }
