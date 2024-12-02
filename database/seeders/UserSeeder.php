@@ -23,6 +23,13 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'level' => 'user',
         ]);
+
+        User::create([
+            'name' => 'Reviewer',
+            'email' => 'reviewer@reviewer.com',
+            'password' => Hash::make('password'),
+            'level' => 'internal_reviewer',
+        ]);
     }
 }
 

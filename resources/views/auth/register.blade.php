@@ -46,6 +46,7 @@
                                 <select id="level" class="form-control @error('level') is-invalid @enderror" name="level" required>
                                     <option value="admin">{{ __('Admin') }}</option>
                                     <option value="user">{{ __('User') }}</option>
+                                    <option value="internal_reviewer">{{ __('Internal Reviewer') }}</option>
                                 </select>
 
                                 @error('level')
