@@ -31,14 +31,8 @@ return new class extends Migration
 
         Schema::create('tag', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('review_id');
             $table->string('tag');
             $table->timestamps();
-
-            $table->foreign('review_id')
-            ->references('id')
-            ->on('review')
-            ->onDelete('cascade');
         });
 
         Schema::create('review_tag', function (Blueprint $table) {
@@ -64,6 +58,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('review_tag');
         Schema::dropIfExists('tag');
         Schema::dropIfExists('review');
     }

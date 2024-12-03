@@ -72,17 +72,19 @@
                                             @endif
                                         </div>
 
-                                        <div>
-                                            <h5 class="card-title">{{ $review->buku->judul }}</h5>
-                                            <h6 class="card-subtitle text-muted">Oleh: {{ $review->user->name }}</h6>
-                                            <p class="mt-3">
-                                                <strong>Tanggal:</strong> {{ $review->created_at->format('d M Y') }}
-                                            </p>
-                                            <p>
-                                                <strong class="me-3">Tags:</strong>
+                                        <div style="width: 100%;">
+                                            <h5 class="card-title mb-0">{{ $review->buku->judul }}</h5>
+                                            <p class="mt-1 mb-2">
                                                 @foreach($review->tags as $tag)
-                                                <span class="badge bg-secondary me-1">{{ $tag->tag->tag }}</span>
+                                                <span class="badge bg-secondary me-1" style="cursor: pointer;" onclick="window.location.href='{{ route('review', ['tag' => $tag->tag->id]) }}';">{{ $tag->tag->tag }}</span>
                                                 @endforeach
+                                            </p>
+                                            <div class="card-subtitle mt-3 border-start border-secondary border-3 px-2 w-100" style="width: 100%;">
+                                                <h6 class="card-subtitle text-muted" style="font-size: small;">{{ $review->user->name }}</h6>
+                                                {{ $review->review }}
+                                            </div>
+                                            <p class="card-subtitle text-muted mt-2" style="font-size: small; text-align: end;">
+                                                {{ $review->created_at->format('d M Y | H:i') }}
                                             </p>
                                         </div>
                                     </div>

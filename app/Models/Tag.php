@@ -11,7 +11,7 @@ class Tag extends Model
     use HasFactory;
     
     protected $table = 'tag';
-    protected $fillable = ['review_id', 'tag'];
+    protected $fillable = ['tag'];
 
     public function reviews()
     {

@@ -79,7 +79,7 @@
             @endforeach
 
             <tr>
-                <td colspan="3"><strong>Total Harga Buku</strong></td>
+                <td colspan="4"><strong>Total Harga Buku</strong></td>
                 <td colspan="5"><strong>Rp. {{ number_format($total_harga, 2, ',', '.') }}</strong></td>
             </tr>
         </tbody>

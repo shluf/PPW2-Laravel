@@ -45,7 +45,7 @@ class ReviewController extends Controller
     {
         $request->validate([
             'reviewer'       => 'required|integer|exists:users,id',
-            'book_id'        => 'required|integer|exists:buku,id',
+            'book_id'        => 'required|integer|exists:books,id',
             'review_content' => 'required|string',
             'tags'           => 'array',
             'tags.*'         => 'string',
@@ -68,6 +68,7 @@ class ReviewController extends Controller
                     ]);
                 } else {
                     $newTag = Tag::create([
+                        'review_id' => $review->id,
                         'tag' => $tag,
                     ]);
                     ReviewTag::create([

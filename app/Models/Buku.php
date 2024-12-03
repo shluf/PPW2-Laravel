@@ -22,6 +22,10 @@ class Buku extends Model
     {
         return $this->hasMany(Gallery::class);
     }
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }
 
 

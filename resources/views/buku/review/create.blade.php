@@ -13,7 +13,7 @@
         <div class="mb-3 position-relative">
             <label for="book_id" class="form-label">Pilih Buku</label>
             <input type="text" class="form-control" id="book-search" placeholder="Cari Buku">
-            <div id="book-list" class="dropdown-menu w-100 shadow mt-1 overflow-x-hidden" style="display: none; max-height: 300px; overflow-y: auto;">
+            <div id="book-list" class="dropdown-menu w-100 shadow mt-1 overflow-x-hidden" style="display: none; cursor: pointer; max-height: 300px; overflow-y: auto;">
                 <div class="row g-2">
                     @foreach($books as $book)
                     <div class="col-8 col-md-6 book-item" data-id="{{ $book->id }}">
